@@ -46,11 +46,11 @@ def evaluate_agent(outputs: dict, reference_outputs: dict):
     class Score(BaseModel):
         """Evaluate the agent's output against the expected output."""
 
-        score: float = Field(
-            description="A score between 0 and 1 indicating the accuracy of the agent's output compared to the expected output. 1 is a perfect match."
-        )
         reason: str = Field(
             description="A brief explanation for why you scored the agent's output as you did."
+        )
+        score: float = Field(
+            description="A score between 0 and 1 indicating the accuracy of the agent's output compared to the expected output. 1 is a perfect match."
         )
 
     score = judge_llm.with_structured_output(Score).invoke(
