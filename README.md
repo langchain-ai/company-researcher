@@ -17,6 +17,17 @@ cd company-researcher
 uvx --refresh --from "langgraph-cli[inmem]" --with-editable . --python 3.11 langgraph dev
 ```
 
+**Note (on macOS):** If you encounter an error similar to [this](./error.png) while running the following command:
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+try the following steps:
+
+- Navigate to the temporary folder where `uvx` was downloaded.
+- Manually move the uvx file to the `.local/bin` directory.
+
 ![company_people_researcher](https://github.com/user-attachments/assets/f651d18c-8cf8-4dde-87cb-3daed59c7fa0)
 
 ## How it works
