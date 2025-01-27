@@ -2,10 +2,7 @@
 name = "company-researcher"
 version = "0.0.1"
 description = "Researcher agent that searches information about a company and returns it in a structured format."
-authors = [
-    { name = "Vadym Barda" },
-    { name = "Lance Martin" }
-]
+authors = [{ name = "Vadym Barda" }, { name = "Lance Martin" }]
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
@@ -15,6 +12,8 @@ dependencies = [
     "langchain-community>=0.3.8",
     "tavily-python>=0.5.0",
     "langchain_anthropic>=0.3.0",
+    "fastapi>=0.95.0",
+    "uvicorn>=0.25.0",
 ]
 
 [project.optional-dependencies]
@@ -58,6 +57,4 @@ lint.ignore = [
 convention = "google"
 
 [dependency-groups]
-dev = [
-    "langgraph-cli[inmem]>=0.1.61",
-]
+dev = ["langgraph-cli[inmem]>=0.1.61"]

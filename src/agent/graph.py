@@ -1,13 +1,13 @@
 import asyncio
 from typing import cast, Any, Literal
 import json
-
-from tavily import AsyncTavilyClient
 from langchain_anthropic import ChatAnthropic
 from langchain_core.rate_limiters import InMemoryRateLimiter
 from langchain_core.runnables import RunnableConfig
 from langgraph.graph import START, END, StateGraph
 from pydantic import BaseModel, Field
+from src.agent.clients import tavily_async_client
+
 
 from agent.configuration import Configuration
 from agent.state import InputState, OutputState, OverallState
@@ -29,10 +29,6 @@ rate_limiter = InMemoryRateLimiter(
 claude_3_5_sonnet = ChatAnthropic(
     model="claude-3-5-sonnet-latest", temperature=0, rate_limiter=rate_limiter
 )
-
-# Search
-
-tavily_async_client = AsyncTavilyClient()
 
 
 class Queries(BaseModel):
@@ -235,3 +231,7 @@ builder.add_conditional_edges("reflection", route_from_reflection)
 
 # Compile
 graph = builder.compile()
+
+
+def get_agent_graph():
+    return graph

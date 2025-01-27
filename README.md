@@ -19,6 +19,44 @@ uvx --refresh --from "langgraph-cli[inmem]" --with-editable . --python 3.11 lang
 
 ![company_people_researcher](https://github.com/user-attachments/assets/f651d18c-8cf8-4dde-87cb-3daed59c7fa0)
 
+## Run as REST API
+
+### 🐳 with Docker
+
+Clone the repository and launch using Docker Compose:
+```bash
+git clone https://github.com/langchain-ai/company-researcher.git
+cd company-researcher
+cp .env.example .env
+docker compose up
+```
+
+### 🚀 with Uvicorn
+
+Clone and run directly with uvicorn:
+```bash
+git clone https://github.com/langchain-ai/company-researcher.git
+cd company-researcher
+cp .env.example .env
+pip install .
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
+### Test the API
+
+Health check:
+```bash
+curl http://localhost:8000/health
+```
+
+Research company:
+```bash
+curl -X POST \
+  http://localhost:8000/research \
+  -H 'Content-Type: application/json' \
+  -d '{"company": "openai", "user_notes": "gpt5 news"}'
+```
+
 ## How it works
 
 Company Researcher Agent follows a multi-step research and extraction workflow that separates web research from schema extraction, allowing for better resource management and comprehensive data collection:
